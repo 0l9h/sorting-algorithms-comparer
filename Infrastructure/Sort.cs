@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 using Lab_7.Models;
 
 namespace Lab_7.Infrastructure
@@ -33,9 +31,22 @@ namespace Lab_7.Infrastructure
             var func = o as ProcessSorting;
             int[] _arr = new int[N];
             arr.CopyTo(_arr, 0);
+            using(StreamWriter sw = new StreamWriter($"Data/{func.Method.Name}_INITIALIZED.txt"))
+            {
+                foreach(int n in arr)
+                {
+                    sw.WriteLine(n);
+                }
+            }
 
             Model.AlgorithmsTimeElapsed[func.Method.Name] = func(_arr);
-
+            using (StreamWriter sw = new StreamWriter($"Data/{func.Method.Name}_SORTED.txt"))
+            {
+                foreach (int n in _arr)
+                {
+                    sw.WriteLine(n);
+                }
+            }
         }
     }
 }

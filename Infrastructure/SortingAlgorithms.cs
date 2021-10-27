@@ -117,6 +117,7 @@ namespace Lab_7.Infrastructure
             {
                 sortedArray[counts[array[i] - minVal]--] = array[i];
             }
+            sortedArray.CopyTo(array,0);
             return watch.ElapsedMilliseconds;
         }
 
