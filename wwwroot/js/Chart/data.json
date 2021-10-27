@@ -1,0 +1,1 @@
+{"Model":{"IsBubbleSortEnabled":true,"IsSelectionSortEnabled":true,"IsShellSortEnabled":true,"IsQuickSortEnabled":true,"IsMergeSortEnabled":true,"IsCountingSortEnabled":true,"AlgorithmsTimeElapsed":{"BubbleSort":54,"SelectionSort":23,"ShellSort":1,"QuickSort":0,"MergeSort":0,"CountingSort":4},"ValuesNumber":4096}}

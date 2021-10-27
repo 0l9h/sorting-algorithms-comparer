@@ -1,0 +1,72 @@
+﻿@model SortModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center mt-5">
+    <form method="post" asp-action="Index">
+        <div class="container">
+            <div class="row">
+                <div class=" col-sm-6">
+                    <h4>Choose number of elements</h4>
+                    <select asp-for="ValuesNumber" class="form-control">
+                        <option class="dropdown-item" value="1024">1024</option>
+                        <option class="dropdown-item" value="4096">4096</option>
+                        <option class="dropdown-item" value="16384">16384</option>
+                        <option class="dropdown-item" value="65536">65536</option>
+                        <option class="dropdown-item" value="262144">262144</option>
+                        <option class="dropdown-item" value="1048576">1048576</option>
+                        <option class="dropdown-item" value="4194304">4194304</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <partial name="AlgorithmsChoice" />
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3 mb-3">Sort</button>
+    </form>
+
+    @if (Model != null)
+    {
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Algorithm</th>
+                    <th scope="col">Time elapsed (ms)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (KeyValuePair<string, long> entry in Model.AlgorithmsTimeElapsed)
+                {
+                    <tr>
+                        <td>
+                            @entry.Key
+                        </td>
+                        <td>
+                            @entry.Value
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+
+
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    @if (Model != null)
+    {
+
+        <script>
+            const MyChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+        </script>
+    }
+</div>
